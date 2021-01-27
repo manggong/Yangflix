@@ -31,6 +31,53 @@ extension SearchViewController: UISearchBarDelegate {
         
         guard let searchTerm = searchBar.text, searchTerm.isEmpty == false else {return}
         
+        SearchAPI.search(searchTerm) {
+            movie in
+        }
+        
         print("---->\(searchBar)")
     }
+}
+
+class SearchAPI {
+    static func search(_ term: String, completion: @escaping([Movie]) -> Void) {
+        
+        let session = URLSession(configuration: .default)
+        
+        var urlComponents =  URLComponents(string: "https://itunes.apple.com/search?")!
+        let mediaQuery = URLQueryItem(name: "media", value: "movie")
+        let entityQuery = URLQueryItem(name: "entity", value: "movie")
+        let termQuery = URLQueryItem(name: "term", value: term)
+
+        urlComponents.queryItems?.append(mediaQuery)
+        urlComponents.queryItems?.append(entityQuery)
+        urlComponents.queryItems?.append(termQuery)
+
+        let requestURL = urlComponents.url!
+        
+        let dataTask = session.dataTask(with: requestURL) {
+            data, response, error in
+            let successRange = 200..<300
+            
+            guard error == nil,
+                  let statusCode = (response as? HTTPURLResponse)?.statusCode,successRange.contains(statusCode) else {
+                        completion([])
+                        return
+            }
+            
+            guard let resultData = data else {
+                completion([])
+                return
+            }
+        }
+        dataTask.resume()
+    }
+}
+
+struct Response {
+    
+}
+
+struct Movie {
+    
 }
