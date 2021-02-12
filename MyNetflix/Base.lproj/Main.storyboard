@@ -172,7 +172,7 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultCell" id="DLD-0b-RXT" customClass="ResultCell" customModule="MyNetflix" customModuleProvider="target">
                                         <rect key="frame" x="8" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DXb-UD-55p">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tQb-7W-kdX">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -182,8 +182,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="hm7-gR-Qvv" secondAttribute="bottom" id="DLh-9q-ZEy"/>
-                                                <constraint firstItem="hm7-gR-Qvv" firstAttribute="leading" secondItem="DXb-UD-55p" secondAttribute="leading" constant="8" id="hj1-6f-y2J"/>
-                                                <constraint firstItem="hm7-gR-Qvv" firstAttribute="top" secondItem="DXb-UD-55p" secondAttribute="top" id="q8g-AY-QtE"/>
+                                                <constraint firstItem="hm7-gR-Qvv" firstAttribute="leading" secondItem="tQb-7W-kdX" secondAttribute="leading" constant="8" id="hj1-6f-y2J"/>
+                                                <constraint firstItem="hm7-gR-Qvv" firstAttribute="top" secondItem="tQb-7W-kdX" secondAttribute="top" id="q8g-AY-QtE"/>
                                                 <constraint firstAttribute="trailing" secondItem="hm7-gR-Qvv" secondAttribute="trailing" id="xYc-FG-gMS"/>
                                             </constraints>
                                         </collectionViewCellContentView>

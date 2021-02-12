@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
-    let movies: [Movie] = []
+    var movies: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,11 @@ extension SearchViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell else {
             return UICollectionViewCell()
         }
+        
+        let movie = movies[indexPath.item]
+        let url = URL(string: movie.thumbnailPath)!
+        
+        cell.movieThumbnail.kf.setImage(with: url)
         return cell
     }
 }
@@ -46,7 +52,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout  {
         let margin: CGFloat = 8
         let itemSpacing: CGFloat = 10
         
-        let width = (collectionView.bounds.width - margin * 2 - itemSpacing * 2)
+        let width = (collectionView.bounds.width - margin * 2 - itemSpacing * 2) / 3
         let height = width * 10/7
         return CGSize(width: width, height: height)
      }
@@ -70,6 +76,10 @@ extension SearchViewController: UISearchBarDelegate {
         
         SearchAPI.search(searchTerm) {
             movies in print("--> 몇개야? \(movies.count), 첫번째꺼 제목은? \(movies.first?.title)")
+            DispatchQueue.main.async {
+                self.movies = movies
+                self.resultCollectionView.reloadData()
+            } 
         }
         
         print("---->검색어: \(searchTerm)")
