@@ -69,10 +69,10 @@ extension SearchViewController: UISearchBarDelegate {
         guard let searchTerm = searchBar.text, searchTerm.isEmpty == false else {return}
         
         SearchAPI.search(searchTerm) {
-            movie in
+            movies in print("--> 몇개야? \(movies.count), 첫번째꺼 제목은? \(movies.first?.title)")
         }
         
-        print("---->\(searchBar)")
+        print("---->검색어: \(searchTerm)")
     }
 }
 
@@ -105,7 +105,6 @@ class SearchAPI {
                 completion([])
                 return
             }
-            
             let movies = SearchAPI.parseMovies(resultData)
             completion(movies)
         }
@@ -145,7 +144,7 @@ struct Movie: Codable {
     enum CodingKeys: String, CodingKey {
         case title = "trackName"
         case director = "artistName"
-        case thumbnailPath = "artWorkUrl100"
-        case previewURL = "previwUrl"
+        case thumbnailPath = "artworkUrl100"
+        case previewURL = "previewUrl"
     }
 }
