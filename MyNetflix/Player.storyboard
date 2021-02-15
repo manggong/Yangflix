@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hbw-JN-VsP" customClass="PlayerView" customModule="MyNetflix" customModuleProvider="target">
+                            <view contentMode="scaleToFill" restorationIdentifier="Player" translatesAutoresizingMaskIntoConstraints="NO" id="Hbw-JN-VsP" customClass="PlayerView" customModule="MyNetflix" customModuleProvider="target">
                                 <rect key="frame" x="44" y="0.0" width="724" height="375"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
